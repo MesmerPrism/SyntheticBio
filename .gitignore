@@ -32,6 +32,8 @@ log/
 ## Project files
 *.csproj.user
 project.lock.json
+__pycache__/
+*.pyc
 
 ## OS files
 Thumbs.db
