@@ -1,0 +1,50 @@
+## Build results
+[Bb]uild/
+[Oo]bj/
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+log/
+[Ll]og/
+[Ll]ogs/
+
+## NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+## Visual Studio and Rider
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+[Tt]est[Rr]esult*/
+.idea/
+
+## Project files
+*.csproj.user
+project.lock.json
+
+## OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+.DS_Store
+
+## Local release scratch
+/artifacts/*.png
+/artifacts/windows-installer/
+/artifacts/preview-signing/
+/artifacts/publish/
+/src/SyntheticBio.App.Package/AppPackages/
+/src/SyntheticBio.App.Package/*.pfx

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SyntheticBio.Core</RootNamespace>
+    <AssemblyName>SyntheticBio.Core</AssemblyName>
+    <Description>Scenario generators, named-pipe server, and exporters for synthetic HR/RR, PMD ECG, and breathing-volume testing.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PolarH10.Protocol\PolarH10.Protocol.csproj" />
+  </ItemGroup>
+</Project>

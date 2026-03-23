@@ -1,0 +1,14 @@
+{
+  "SchemaVersion": 1,
+  "ScenarioId": "resonance_010hz",
+  "DeviceName": "0.10 Hz resonance breathing",
+  "StartedAtUtc": "2026-03-20T16:04:33.3746418+00:00",
+  "SavedAtUtc": "2026-03-20T16:07:38.4877889+00:00",
+  "HrRrSampleCount": 201,
+  "BreathingSampleCount": 2250,
+  "DerivedMeasures": {
+    "CoherenceReady": true,
+    "HrvReady": false,
+    "DynamicsTrackingState": "Stale"
+  }
+}

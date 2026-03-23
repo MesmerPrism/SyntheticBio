@@ -1,0 +1,14 @@
+{
+  "SchemaVersion": 1,
+  "ScenarioId": "flat_breathing",
+  "DeviceName": "Flat low-excursion breathing",
+  "StartedAtUtc": "2026-03-20T16:04:31.9554104+00:00",
+  "SavedAtUtc": "2026-03-20T16:07:37.0566206+00:00",
+  "HrRrSampleCount": 212,
+  "BreathingSampleCount": 2250,
+  "DerivedMeasures": {
+    "CoherenceReady": true,
+    "HrvReady": false,
+    "DynamicsTrackingState": "WaitingForBreathingTracking"
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Use With PolarH10 | SyntheticBio</title>
+  <meta name="description" content="Run SyntheticBio and PolarH10 together for same-machine synthetic transport sessions." />
+  <link rel="icon" href="assets/syntheticbio-stripe-mark.png" type="image/png" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <img src="assets/syntheticbio-stripe-mark.png" alt="SyntheticBio mark" />
+        <div class="brand-copy">
+          <span>Windows-first synthetic telemetry harness</span>
+          <strong>SyntheticBio</strong>
+        </div>
+      </a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="./index.html">Home</a>
+        <a href="./download.html">Download</a>
+        <a class="active" href="./integration.html">Integrate</a>
+        <a href="https://github.com/MesmerPrism/SyntheticBio">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="page-marker">Same-machine workflow</div>
+        <h1 class="page-title">Use SyntheticBio with PolarH10</h1>
+        <p class="page-intro">SyntheticBio starts the named-pipe synthetic server and helps launch or reuse the PolarH10 app on the matching pipe. The default pipe is <code>polarh10-synth</code>.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Typical flow</h2>
+        <div class="step-grid">
+          <article class="step-card">
+            <span class="step-no">01</span>
+            <h3>Start SyntheticBio first</h3>
+            <p>Open the operator app, keep the default pipe unless you have a reason to change it, and press <code>Establish connection</code> or start the server manually.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">02</span>
+            <h3>Launch PolarH10 on synthetic transport</h3>
+            <p>Let SyntheticBio reuse an existing synthetic session or launch the sibling PolarH10 app with the synthetic transport enabled.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">03</span>
+            <h3>Scan the virtual devices</h3>
+            <p>Use the demo profiles in PolarH10 just like live straps. The scenarios loop, which makes longer capture and validation sessions easier.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">04</span>
+            <h3>Export if you need artifacts</h3>
+            <p>Use SyntheticBio to write fixture folders, benchmark reports, and showcase data without needing to re-run a live session.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>CLI launch example</h2>
+        <pre><code>dotnet run --project src\SyntheticBio.Cli -- serve --pipe polarh10-synth --duration 360
+
+dotnet run --project C:\Users\tillh\source\repos\PolarH10\src\PolarH10.Cli -- scan --transport synthetic --synthetic-pipe polarh10-synth</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Operator-side notes</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Five-minute HRV window</h3>
+            <p>The default <code>360 s</code> scenario length is long enough to fill PolarH10’s default five-minute rolling HRV window without a loop boundary.</p>
+          </article>
+          <article class="card">
+            <h3>Transport is fixed at startup</h3>
+            <p>If PolarH10 is already running with the Windows BLE transport, close it before trying to reuse the synthetic path.</p>
+          </article>
+          <article class="card">
+            <h3>Cross-site split</h3>
+            <p>PolarH10 Pages gives a short companion-app pointer. SyntheticBio Pages hosts the download flow and the deeper SyntheticBio-specific guidance.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Related links</h2>
+        <div class="button-row">
+          <a class="button primary" href="https://mesmerprism.github.io/PolarH10/">Open PolarH10 Pages</a>
+          <a class="button" href="./download.html">Download SyntheticBio</a>
+          <a class="button" href="https://github.com/MesmerPrism/SyntheticBio">Open SyntheticBio repo</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      SyntheticBio research preview • PolarH10 integration guide
+    </footer>
+  </div>
+</body>
+</html>

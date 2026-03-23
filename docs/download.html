@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download & Install | SyntheticBio</title>
+  <meta name="description" content="Install the SyntheticBio Windows research preview from the latest public release using the guided setup bootstrapper." />
+  <link rel="icon" href="assets/syntheticbio-stripe-mark.png" type="image/png" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <img src="assets/syntheticbio-stripe-mark.png" alt="SyntheticBio mark" />
+        <div class="brand-copy">
+          <span>Windows-first synthetic telemetry harness</span>
+          <strong>SyntheticBio</strong>
+        </div>
+      </a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="./index.html">Home</a>
+        <a class="active" href="./download.html">Download</a>
+        <a href="./integration.html">Integrate</a>
+        <a href="https://github.com/MesmerPrism/SyntheticBio">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="page-marker">SyntheticBio research preview</div>
+        <h1 class="page-title">Download & Install</h1>
+        <p class="page-intro">The recommended path is the guided setup bootstrapper, which prompts for admin rights, trusts the preview certificate, and opens App Installer automatically.</p>
+
+        <div class="note-card">
+          <span class="caption-title">Research Preview</span>
+          <p>This installer is meant for research and developer use. It is self-signed, not backed by a public CA, so Windows still requires an admin-approved trust step. The guided setup helper performs that trust step for you and then opens App Installer.</p>
+        </div>
+
+        <div class="button-row">
+          <a class="button primary" href="https://github.com/MesmerPrism/SyntheticBio/releases/latest/download/SyntheticBio-Preview-Setup.exe">Guided setup (recommended)</a>
+          <a class="button" href="ms-appinstaller:?source=https://github.com/MesmerPrism/SyntheticBio/releases/latest/download/SyntheticBio.appinstaller">Install with App Installer</a>
+          <a class="button" href="https://github.com/MesmerPrism/SyntheticBio/releases/latest/download/SyntheticBio.cer">Download certificate</a>
+          <a class="button" href="https://github.com/MesmerPrism/SyntheticBio/releases/latest/download/SyntheticBio.msix">Download MSIX</a>
+          <a class="button" href="https://github.com/MesmerPrism/SyntheticBio/releases">Open releases</a>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Fast path</h2>
+        <div class="step-grid">
+          <article class="step-card">
+            <span class="step-no">01</span>
+            <h3>Run guided setup</h3>
+            <p>Download <code>SyntheticBio-Preview-Setup.exe</code> from the latest release and open it like a normal installer helper.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">02</span>
+            <h3>Accept the admin prompt</h3>
+            <p>Windows asks for elevation because the helper needs to trust the preview certificate in <code>Local Machine &gt; Trusted People</code>.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">03</span>
+            <h3>Let it trust the cert and open App Installer</h3>
+            <p>The helper downloads the latest <code>SyntheticBio.cer</code>, imports it into the machine trust store, and opens the published <code>SyntheticBio.appinstaller</code>.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">04</span>
+            <h3>Finish in App Installer</h3>
+            <p>App Installer should now show the package as trusted. Complete the install and launch SyntheticBio from the Start menu.</p>
+          </article>
+        </div>
+        <p>The helper still requires admin approval and may still trigger browser or SmartScreen friction because it is not backed by a publicly trusted code-signing certificate. It removes the need to browse certificate stores manually.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Manual fallback</h2>
+        <p>Use this path if the guided helper is blocked by your environment or you prefer to import the certificate yourself.</p>
+        <div class="step-grid">
+          <article class="step-card">
+            <span class="step-no">01</span>
+            <h3>Download the certificate</h3>
+            <p>Open <code>SyntheticBio.cer</code> from the latest release.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">02</span>
+            <h3>Install to the machine store</h3>
+            <p>Choose <code>Install Certificate</code>, select <code>Local Machine</code>, and place it in <code>Trusted People</code>.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">03</span>
+            <h3>Open the appinstaller</h3>
+            <p>After the certificate is trusted, open <code>SyntheticBio.appinstaller</code> to finish the install.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Requirements</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Windows</h3>
+            <p>Windows 10 version 19041 or later.</p>
+          </article>
+          <article class="card">
+            <h3>Companion use</h3>
+            <p>SyntheticBio is most useful when paired with the PolarH10 app, but the exporter and benchmark paths also work on their own.</p>
+          </article>
+          <article class="card">
+            <h3>Default export location</h3>
+            <p>Installed builds default fixture export to <code>Documents\SyntheticBio\Fixtures</code>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      SyntheticBio research preview • download channel
+    </footer>
+  </div>
+</body>
+</html>

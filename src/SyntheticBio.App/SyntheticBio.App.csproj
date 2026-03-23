@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>SyntheticBio.App</RootNamespace>
+    <AssemblyName>SyntheticBio.App</AssemblyName>
+    <Description>Windows operator app for the SyntheticBio same-machine live synthetic server.</Description>
+    <ApplicationIcon>Assets\syntheticbio-stripe-mark.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SyntheticBio.Core\SyntheticBio.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\syntheticbio-stripe-mark.ico" />
+  </ItemGroup>
+</Project>

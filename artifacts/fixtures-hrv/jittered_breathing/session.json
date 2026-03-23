@@ -1,0 +1,14 @@
+{
+  "SchemaVersion": 1,
+  "ScenarioId": "jittered_breathing",
+  "DeviceName": "Jittered breathing",
+  "StartedAtUtc": "2026-03-20T16:04:32.2533931+00:00",
+  "SavedAtUtc": "2026-03-20T16:07:37.4178253+00:00",
+  "HrRrSampleCount": 210,
+  "BreathingSampleCount": 2250,
+  "DerivedMeasures": {
+    "CoherenceReady": true,
+    "HrvReady": false,
+    "DynamicsTrackingState": "Stale"
+  }
+}

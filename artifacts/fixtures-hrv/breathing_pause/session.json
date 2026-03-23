@@ -1,0 +1,14 @@
+{
+  "SchemaVersion": 1,
+  "ScenarioId": "breathing_pause",
+  "DeviceName": "Breathing pause / stale input",
+  "StartedAtUtc": "2026-03-20T16:04:31.6035341+00:00",
+  "SavedAtUtc": "2026-03-20T16:07:36.9450353+00:00",
+  "HrRrSampleCount": 207,
+  "BreathingSampleCount": 1875,
+  "DerivedMeasures": {
+    "CoherenceReady": true,
+    "HrvReady": false,
+    "DynamicsTrackingState": "Stale"
+  }
+}

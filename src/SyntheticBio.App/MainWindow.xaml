@@ -1,0 +1,403 @@
+<Window x:Class="SyntheticBio.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SyntheticBio // Telemetry Harness"
+        Icon="Assets/syntheticbio-stripe-mark.ico"
+        Width="1320"
+        Height="900"
+        MinWidth="1120"
+        MinHeight="780"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="PanelFrameStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource AppPaperBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PanelEdgeBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Margin" Value="0,0,0,12" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+
+        <Style x:Key="DarkPanelFrameStyle" TargetType="Border" BasedOn="{StaticResource PanelFrameStyle}">
+            <Setter Property="Background" Value="{StaticResource SurfaceTintBrush}" />
+        </Style>
+
+        <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="{StaticResource CarbonBrush}" />
+        </Style>
+
+        <Style x:Key="MetricLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource GraphiteBrush}" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+        </Style>
+
+        <Style x:Key="ConsoleListStyle" TargetType="ListBox">
+            <Setter Property="Background" Value="{StaticResource AppPaperBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource CarbonBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PanelEdgeBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontFamily" Value="{StaticResource MonoFont}" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <Style x:Key="ConsoleListItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Foreground" Value="{StaticResource CarbonBrush}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Chrome"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Chrome" Property="Background" Value="{StaticResource SurfaceTintBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DeviceRailListStyle" TargetType="ListBox" BasedOn="{StaticResource ConsoleListStyle}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+
+        <Style x:Key="DeviceRailListItemStyle" TargetType="ListBoxItem" BasedOn="{StaticResource ConsoleListItemStyle}">
+            <Setter Property="Padding" Value="12,10" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Chrome"
+                                Background="{StaticResource AppPaperBrush}"
+                                BorderBrush="{StaticResource PanelEdgeBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Chrome" Property="BorderBrush" Value="{StaticResource FocusBlueBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Fill="{StaticResource FocusBlueBrush}" />
+            <Rectangle Grid.Column="1" Fill="{StaticResource TelemetryGreenBrush}" />
+            <Rectangle Grid.Column="2" Fill="{StaticResource HazardYellowBrush}" />
+            <Rectangle Grid.Column="3" Fill="{StaticResource SafetyOrangeBrush}" />
+            <Rectangle Grid.Column="4" Fill="{StaticResource SignalRedBrush}" />
+        </Grid>
+
+        <Border Grid.Row="1"
+                Background="{StaticResource SurfaceTintBrush}"
+                BorderBrush="{StaticResource PanelEdgeBrush}"
+                BorderThickness="0,0,0,1"
+                Padding="20,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="SyntheticBio"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Margin="0,0,0,4" />
+                    <TextBlock Text="Same-machine HR/RR, PMD ECG, and breathing-volume generator for live PolarH10 coherence, HRV, and breathing-dynamics tests."
+                               FontSize="14"
+                               Foreground="{StaticResource GraphiteBrush}"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Status"
+                               Style="{StaticResource MetricLabelStyle}"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,0,4" />
+                    <TextBlock x:Name="StatusTextBlock"
+                               Text="Idle"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Right"
+                               Foreground="{StaticResource GraphiteBrush}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="{StaticResource SurfaceTintBrush}"
+                    BorderBrush="{StaticResource PanelEdgeBrush}"
+                    BorderThickness="0,0,1,0">
+                <DockPanel Margin="18" LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Top" Margin="0,0,0,14">
+                        <TextBlock Text="Virtual Devices"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,8" />
+                        <TextBlock Text="These are the six live showcase profiles the named-pipe server exposes to PolarH10 during a session."
+                                   FontSize="13"
+                                   Foreground="{StaticResource GraphiteBrush}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <ListBox x:Name="DevicesListBox"
+                             Style="{StaticResource DeviceRailListStyle}"
+                             ItemContainerStyle="{StaticResource DeviceRailListItemStyle}" />
+                </DockPanel>
+            </Border>
+
+            <GridSplitter Grid.Column="1"
+                          Width="6"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch" />
+
+            <ScrollViewer Grid.Column="2"
+                          Background="{StaticResource AppPaperBrush}"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="20,18,20,12">
+                    <TextBlock Text="Server Control"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0,0,0,8" />
+
+                    <Border Style="{StaticResource PanelFrameStyle}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="280" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="220" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Pipe base"
+                                       Style="{StaticResource MetricLabelStyle}" />
+                            <TextBox x:Name="PipeBaseNameTextBox"
+                                     Grid.Column="1"
+                                     Margin="0,0,0,10"
+                                     Text="polarh10-synth" />
+
+                            <TextBlock Grid.Column="3"
+                                       Text="Scenario length (s)"
+                                       Style="{StaticResource MetricLabelStyle}" />
+                            <TextBox x:Name="DurationTextBox"
+                                     Grid.Column="4"
+                                     Margin="0,0,0,10"
+                                     Text="360" />
+
+                            <TextBlock Grid.Row="1"
+                                       Text="Fixture output"
+                                       Style="{StaticResource MetricLabelStyle}" />
+                            <TextBox x:Name="OutputFolderTextBox"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="4"
+                                     Margin="0,0,0,10" />
+
+                            <WrapPanel Grid.Row="2"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="6"
+                                       Margin="0,4,0,8">
+                                <Button Content="Start server"
+                                        Width="108"
+                                        Margin="0,0,8,8"
+                                        Click="OnStartClick" />
+                                <Button Content="Stop"
+                                        Width="76"
+                                        Margin="0,0,8,8"
+                                        Background="{StaticResource AppPaperBrush}"
+                                        BorderBrush="{StaticResource PanelEdgeBrush}"
+                                        Click="OnStopClick" />
+                                <Button Content="Export fixtures"
+                                        Width="120"
+                                        Margin="0,0,8,8"
+                                        Click="OnExportClick" />
+                                <Button Content="Open output folder"
+                                        Width="138"
+                                        Margin="0,0,0,8"
+                                        Background="{StaticResource AppPaperBrush}"
+                                        BorderBrush="{StaticResource PanelEdgeBrush}"
+                                        Click="OnOpenOutputFolderClick" />
+                            </WrapPanel>
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="6"
+                                       Text="Use the default pipe if you want the in-app connection button to reuse an existing synthetic PolarH10 session or launch the canonical PolarH10 workspace app without extra edits. Live devices loop their configured scenario length until you press Stop."
+                                       FontSize="13"
+                                       Foreground="{StaticResource GraphiteBrush}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="Test Session"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0,4,0,8" />
+
+                    <Border Style="{StaticResource DarkPanelFrameStyle}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="PolarH10 app path"
+                                       Style="{StaticResource MetricLabelStyle}" />
+                            <TextBox x:Name="PolarAppPathTextBox"
+                                     Grid.Column="1"
+                                     Margin="0,0,12,10" />
+                            <Button Grid.Column="2"
+                                    Content="Browse"
+                                    Width="84"
+                                    Margin="0,0,8,10"
+                                    Background="{StaticResource AppPaperBrush}"
+                                    BorderBrush="{StaticResource PanelEdgeBrush}"
+                                    Click="OnBrowsePolarAppClick" />
+                            <Button Grid.Column="3"
+                                    Content="Establish connection"
+                                    Width="154"
+                                    Margin="0,0,0,10"
+                                    Click="OnEstablishConnectionClick" />
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="4"
+                                       Text="Establish connection starts the synthetic server if needed, reuses an already-running synthetic PolarH10 session when possible, or launches the canonical sibling app with synthetic transport enabled. If PolarH10 is already running with Windows BLE transport, close it first because transport is fixed at startup."
+                                       FontSize="13"
+                                       Foreground="{StaticResource GraphiteBrush}"
+                                       TextWrapping="Wrap"
+                                        Margin="0,0,0,10" />
+
+                            <TextBlock x:Name="SessionHintTextBlock"
+                                       Grid.Row="2"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="4"
+                                       Text="Establish connection will start the server if needed, then reuse or launch PolarH10 for synthetic transport."
+                                       FontSize="16"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource FocusBlueBrush}"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="Readiness"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0,4,0,8" />
+
+                    <Border Style="{StaticResource PanelFrameStyle}">
+                        <StackPanel>
+                            <TextBlock Text="1. The live device set now includes dedicated coherence, HRV, and entropy high/low examples for documentation capture."
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Margin="0,0,0,6" />
+                            <TextBlock Text="2. The default 360 s scenario length is long enough to fill PolarH10's default five-minute HRV window without a loop boundary."
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Margin="0,0,0,6" />
+                            <TextBlock Text="3. Flat, stale, jittered, resonance, and irregular variants remain available in the export matrix for edge-case comparison."
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Margin="0,0,0,6" />
+                            <TextBlock Text="4. PolarH10 launch wiring still validates synthetic PMD ECG alongside the breathing telemetry path, while ACC remains intentionally bypassed."
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Margin="0,0,0,6" />
+                            <TextBlock Text="5. Use the benchmark command before a research run if you want a quick regression check on this machine."
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="Operator Log"
+                               Style="{StaticResource SectionTitleStyle}"
+                               Margin="0,4,0,8" />
+
+                    <Border Style="{StaticResource PanelFrameStyle}"
+                            Margin="0,0,0,0">
+                        <TextBox x:Name="LogTextBox"
+                                 Height="260"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 FontFamily="{StaticResource MonoFont}"
+                                 FontSize="11"
+                                 IsReadOnly="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 AcceptsReturn="True" />
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Border Grid.Row="3"
+                Background="{StaticResource SurfaceTintBrush}"
+                BorderBrush="{StaticResource PanelEdgeBrush}"
+                BorderThickness="0,1,0,0"
+                Padding="14,8">
+            <TextBlock Text="SyntheticBio is a local operator shell for same-machine PolarH10 test sessions."
+                       FontSize="11"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource GraphiteBrush}" />
+        </Border>
+    </Grid>
+</Window>

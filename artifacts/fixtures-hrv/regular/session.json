@@ -1,0 +1,14 @@
+{
+  "SchemaVersion": 1,
+  "ScenarioId": "regular",
+  "DeviceName": "Regular breathing / stable sinus rhythm",
+  "StartedAtUtc": "2026-03-20T16:04:33.273106+00:00",
+  "SavedAtUtc": "2026-03-20T16:07:38.373986+00:00",
+  "HrRrSampleCount": 210,
+  "BreathingSampleCount": 2250,
+  "DerivedMeasures": {
+    "CoherenceReady": true,
+    "HrvReady": false,
+    "DynamicsTrackingState": "Stale"
+  }
+}

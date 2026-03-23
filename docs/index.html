@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SyntheticBio</title>
+  <meta name="description" content="Windows-first synthetic HR/RR, PMD ECG, and breathing telemetry harness for same-machine PolarH10 testing." />
+  <link rel="icon" href="assets/syntheticbio-stripe-mark.png" type="image/png" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <img src="assets/syntheticbio-stripe-mark.png" alt="SyntheticBio mark" />
+        <div class="brand-copy">
+          <span>Windows-first synthetic telemetry harness</span>
+          <strong>SyntheticBio</strong>
+        </div>
+      </a>
+      <nav class="top-nav" aria-label="Primary">
+        <a class="active" href="./index.html">Home</a>
+        <a href="./download.html">Download</a>
+        <a href="./integration.html">Integrate</a>
+        <a href="https://github.com/MesmerPrism/SyntheticBio">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="hero">
+        <article class="panel hero-copy">
+          <div class="page-marker">Companion app for PolarH10 research and developer workflows</div>
+          <h1>Synthetic telemetry for PolarH10 without hardware.</h1>
+          <p class="lead">SyntheticBio generates same-machine HR/RR, PMD ECG, and breathing-volume telemetry so you can test the PolarH10 app, exports, formulas, and demos without needing a live chest strap for every run.</p>
+          <div class="button-row">
+            <a class="button primary" href="./download.html">Download research preview</a>
+            <a class="button" href="./integration.html">Use with PolarH10</a>
+            <a class="button" href="https://mesmerprism.github.io/PolarH10/">Open PolarH10 docs</a>
+          </div>
+        </article>
+
+        <aside class="panel hero-aside">
+          <div class="page-marker">What it is for</div>
+          <h2>Built for repeatable demos, test runs, and fixture export.</h2>
+          <p>SyntheticBio is the operator-side companion app. It runs the live named-pipe server, exposes documentation-friendly virtual devices, exports offline fixture sets, and helps launch PolarH10 in synthetic transport mode on the matching pipe.</p>
+          <div class="note-card">
+            <span class="caption-title">Research Preview</span>
+            <p>The downloadable preview is self-signed. The guided setup helper handles the certificate trust step for you, then opens App Installer.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel">
+        <h2>Why use it</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Demo the app reliably</h3>
+            <p>Run coherence, HRV, and breathing-dynamics showcase scenarios with the same timings every time instead of depending on a live operator session.</p>
+          </article>
+          <article class="card">
+            <h3>Export fixture bundles</h3>
+            <p>Write deterministic scenario folders with ground truth, analysis traces, RR/HR CSV, ECG CSV, and session metadata for documentation and validation.</p>
+          </article>
+          <article class="card">
+            <h3>Test same-machine integration</h3>
+            <p>Launch or reuse PolarH10 against the synthetic transport so the Windows app exercises its real decode and tracker path while the input side stays controlled.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Default live profile set</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Coherence pair</h3>
+            <p><code>Polar H10 Demo Coherence High</code> and <code>Polar H10 Demo Coherence Low</code> show the contrast between concentrated resonance and noisier off-resonance RR structure.</p>
+          </article>
+          <article class="card">
+            <h3>HRV pair</h3>
+            <p><code>Polar H10 Demo HRV High</code> and <code>Polar H10 Demo HRV Low</code> give a stable comparison case for five-minute rolling HRV windows.</p>
+          </article>
+          <article class="card">
+            <h3>Entropy pair</h3>
+            <p><code>Polar H10 Demo Entropy High</code> and <code>Polar H10 Demo Entropy Low</code> let you check derived breathing-dynamics behavior with known regularity differences.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Typical workflow</h2>
+        <div class="step-grid">
+          <article class="step-card">
+            <span class="step-no">01</span>
+            <h3>Start SyntheticBio</h3>
+            <p>Open the operator app, keep the default pipe unless you have a reason to change it, and start the live server or press <code>Establish connection</code>.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">02</span>
+            <h3>Open PolarH10 on synthetic transport</h3>
+            <p>Let SyntheticBio launch it, or open PolarH10 yourself with <code>--transport synthetic --synthetic-pipe polarh10-synth</code>.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">03</span>
+            <h3>Scan and connect</h3>
+            <p>Use the virtual devices in PolarH10 just like live straps. The scenarios loop, which keeps longer validation and documentation sessions practical.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-no">04</span>
+            <h3>Export when needed</h3>
+            <p>Write deterministic fixtures and benchmark runs from SyntheticBio when you need reusable artifacts instead of a live collection session.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      SyntheticBio research preview • companion site for the PolarH10 ecosystem
+    </footer>
+  </div>
+</body>
+</html>

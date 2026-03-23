@@ -1,0 +1,14 @@
+{
+  "SchemaVersion": 1,
+  "ScenarioId": "off_24bpm",
+  "DeviceName": "Off-resonance 24 BPM",
+  "StartedAtUtc": "2026-03-20T16:04:32.9202521+00:00",
+  "SavedAtUtc": "2026-03-20T16:07:38.2719377+00:00",
+  "HrRrSampleCount": 220,
+  "BreathingSampleCount": 2250,
+  "DerivedMeasures": {
+    "CoherenceReady": true,
+    "HrvReady": false,
+    "DynamicsTrackingState": "Stale"
+  }
+}
